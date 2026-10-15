@@ -3,6 +3,8 @@
 </p>
 
 # Hermes Agent ☤
+
+> **Fork context:** MetaBot / MetaCall operating evidence and the October 15, 2026 milestone are recorded in [FORK_NOTES.md](FORK_NOTES.md). Private AI-OS changes are not asserted to be included in this fork; upstream Hermes documentation continues below.
 <p align="center">
   <a href="https://hermes-agent.nousresearch.com/">Hermes Agent</a> | <a href="https://hermes-agent.nousresearch.com/">Hermes Desktop</a>
 </p>
