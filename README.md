@@ -4,7 +4,7 @@
 
 # Hermes Agent ☤
 
-> **Fork context:** MetaBot / MetaCall operating evidence and the October 17, 2026 paid-only inference / Fiverr revenue-path milestone are recorded in [FORK_NOTES.md](FORK_NOTES.md). Private AI-OS changes are not asserted to be included in this fork; upstream Hermes documentation continues below.
+> **Fork context:** MetaBot / MetaCall operating evidence and the October 18, 2026 production reconciliation are recorded in [FORK_NOTES.md](FORK_NOTES.md). Private AI-OS changes are not asserted to be included in this fork; upstream Hermes documentation continues below.
 <p align="center">
   <a href="https://hermes-agent.nousresearch.com/">Hermes Agent</a> | <a href="https://hermes-agent.nousresearch.com/">Hermes Desktop</a>
 </p>
