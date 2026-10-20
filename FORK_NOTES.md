@@ -2,32 +2,37 @@
 
 This is a fork of [Nous Research's Hermes Agent](https://github.com/NousResearch/hermes-agent). Upstream documentation describes Hermes; the separate MetaBot / MetaCall operating record describes the private AI-OS integration. This note does not assert that this fork contains the private integration, production repair overlay, funding database, paid-only routing guard, or private commercial state. The deployed production pin is not a statement of this fork branch's HEAD. No upstream code or product semantics are changed by this documentation update.
 
-## Current milestone — October 19, 2026
+## Current milestone — October 20, 2026
 
-The separately operated MetaBot / MetaCall company environment has advanced its continuation and authority scoping without changing the fork's upstream Hermes semantics.
+The separately operated MetaBot / MetaCall environment has advanced economic continuation and lifecycle truthfulness without changing this fork's upstream Hermes semantics.
 
 Current reported production policy remains:
 
-- `free_nous_allowed=true`
-- `paid_only=false`
-- CEO primary `deepseek/deepseek-v4.1-flash-1017`
-- authorized free Nous use under the amended funding policy
+- `free_nous_allowed=true`;
+- `paid_only=false`;
+- CEO primary `deepseek/deepseek-v4.1-flash-1017`;
+- authorized free Nous use only through the existing qualification/funding gates.
 
-October 19 production reconciliation reports:
+October 20 operating evidence reports:
 
-- routine Fiverr seller work is **COMPANY_OPERABLE** when existing action-specific gates admit it;
-- owner escalation requires a fresh observed CAPTCHA, MFA, identity verification or genuinely non-delegable personal/legal challenge;
-- scheduled-executive mutation/publication remains **UNPROVEN**;
-- sponsorship is class-scoped and cannot suppress higher-priority buyer/reply/proposal/follow-up/Fiverr work;
-- standing mission progress advanced to **7 / 9 MET**;
-- a supported internal dry run recorded **WAITING**, **0 inference calls** and **no global barriers**;
-- recognized revenue and collected cash remain unproven.
+- anti-stale economic discovery before pre-revenue WAITING;
+- a bounded one-shot commercial due-time wake on the existing canonical CEO task, with PT2H retained as recovery/watchdog;
+- exact inference-capacity/cooldown semantics rather than generic failure;
+- an active funding/runway discovery lane;
+- exact post-executive parent reconciliation and no accepted stale dispatched ownership after retirement;
+- economic work ordered ahead of mission-only progress;
+- Step5 not promoted at the retained checkpoint because `stepfun/step-5-preview:free` was absent from the authenticated Nous catalog;
+- customer, funding award, recognized revenue and collected cash still unproven.
 
 The commercial priority remains:
 
 ```text
 SELL → CLOSE → COLLECT → DELIVER
 ```
+
+These are observations about the separate private AI-OS integration. This fork note does **not** assert that the private production overlay, funding state, local repair modules or commercial data are contained in this public fork.
+
+[Current state](https://github.com/metacallllc-lang/hermes-autonomous-company/blob/main/CURRENT_STATE.md) · [October 20 reconciliation](https://github.com/metacallllc-lang/hermes-autonomous-company/blob/main/evidence/PRODUCTION_RECONCILIATION_2026-10-20.md) · [Traction](https://github.com/metacallllc-lang/hermes-autonomous-company/blob/main/TRACTION.md)
 
 ### Release provenance caution
 
