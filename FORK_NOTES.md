@@ -39,6 +39,6 @@ Upstream Hermes issue [#141509](https://github.com/NousResearch/hermes-agent/iss
 
 For the separate MetaBot runtime, a stable version label is therefore not sufficient promotion evidence. Candidate artifacts should be checked against required fixes and behavioral regressions before admission. This note does **not** claim that this fork branch contains the private production overlay or that production was upgraded/downgraded because of that issue.
 
-[Current state](https://github.com/metacallllc-lang/hermes-autonomous-company/blob/main/CURRENT_STATE.md) · [October 20 reconciliation](https://github.com/metacallllc-lang/hermes-autonomous-company/blob/main/evidence/PRODUCTION_RECONCILIATION_2026-10-20.md) · [Traction](https://github.com/metacallllc-lang/hermes-autonomous-company/blob/main/TRACTION.md)
+[Current state](https://github.com/metacallllc-lang/hermes-autonomous-company/blob/main/CURRENT_STATE.md) · [October 24 reconciliation](https://github.com/metacallllc-lang/hermes-autonomous-company/blob/main/evidence/PRODUCTION_RECONCILIATION_2026-10-24.md) · [Traction](https://github.com/metacallllc-lang/hermes-autonomous-company/blob/main/TRACTION.md)
 
 These observations concern the separately operated company environment. They do not establish upstream Hermes guarantees, fork-wide acceptance, or upstream endorsement. The public record is sanitized; private implementation and operational artifacts are not included here.
