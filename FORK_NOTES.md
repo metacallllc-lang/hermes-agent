@@ -2,36 +2,27 @@
 
 This is a fork of [Nous Research's Hermes Agent](https://github.com/NousResearch/hermes-agent). Upstream documentation describes Hermes; the separate MetaBot / MetaCall operating record describes the private AI-OS integration. This note does not assert that this fork contains the private integration, production repair overlay, funding database, paid-only routing guard, or private commercial state. The deployed production pin is not a statement of this fork branch's HEAD. No upstream code or product semantics are changed by this documentation update.
 
-## Current milestone — October 24, 2026
+## Current milestone — October 26, 2026
 
-The separately operated MetaBot / MetaCall environment now separates **capability qualification** from **production admission** while preserving the fork boundary: these are observations about the private AI-OS integration, not claims that this public fork contains those private modules.
+The separately operated MetaBot / MetaCall environment is now prioritizing **commercial conversion over broad infrastructure rebuilding** while preserving the fork boundary: these are observations about the private AI-OS integration, not claims that this public fork contains those private modules.
 
-Current reported company state:
+Current reported company boundary:
 
-- governance/charter remains sealed and verified;
-- owner authority remains root + veto;
-- one canonical CEO/scheduler/company-state plane remains authoritative;
-- deterministic economic/source checks continue;
-- current production **CEO route is NONE**;
-- Beam and Solar Mini4 retain scoped TOOL + CEO capability evidence but are not production-admitted;
-- Step-3.7 earned production admission, was used in a real CRO production turn, failed independent verification, and was revoked;
-- the Step failure was classified as mixed producer-contract omission + model behavior; the contract was corrected without weakening verification and the failed identity remains preserved;
-- causal lesson L-304 records the failure-to-policy learning;
-- customer conversion, recognized revenue, collected cash, model/API credit award, equipment award, sponsor commitment, investor interest and funding remain unproven.
+- governance/charter remains sealed under owner **root + veto** doctrine;
+- recent acceptance evidence measured exactly one healthy authorized gateway and passing cron admission without creating a second gateway;
+- a free Solar CEO route was admitted during a bounded October 26 proof window; route admission remains time/evidence scoped rather than a permanent fork claim;
+- later Command Center views became stale/degraded and reported scheduler/loop UNKNOWN or zero cycles; this is treated as observer/read-side uncertainty unless canonical runtime evidence proves an actual production failure;
+- CRO assignment **7b2c5c7d1592** was reconciled as **TIMED_OUT_NEVER_RAN / terminal TIMED_OUT** because the executive subagent did not actually execute; dispatch is not promoted into execution;
+- latest commercial-readiness evidence reports outbound send, reply detection and governed reply send as **READY**, with B1 authorized;
+- Mercury ACH/wire and invoicing are enabled and **collect_payment is CONFIGURED**, but no real customer payment has yet live-verified the collection path;
+- ContactOut offered an extended no-cost trial of approximately 2,000 contacts, classified as a resource/vendor opportunity rather than buyer demand, customer, revenue, cash or funding;
+- current cash remains UNKNOWN unless freshly measured; the last verified dated cash observation remains $0.96;
+- the company priority is now **SELL → FOLLOW UP → CLOSE → COLLECT → ONBOARD → FULFILL → VERIFY → DELIVER → RETAIN**;
+- customer conversion, recognized revenue, new customer cash, trial activation, sponsor/grant/VC receipt, activated startup credits and full 24/7 economic autonomy remain unproven.
 
-This fork note deliberately does **not** name a current production Hermes version or primary model unless the public fork itself proves that fact. A provider/model/session is replaceable harness state; the durable company record is objective + authority + delegation + evidence + economic state + lessons.
+This fork note deliberately does **not** claim that the private production overlay, company-state stores, funding state, local repair modules or commercial data are contained in this public fork. A provider/model/session remains replaceable harness state; the durable company record is objective + authority + delegation + evidence + economic state + lessons.
 
-The commercial operating lifecycle remains:
-
-```text
-SELL → CLOSE → ONBOARD → COLLECT / SECURE PAYMENT
-→ FULFILL → VERIFY / QA → DELIVER
-→ COLLECT BALANCE → RETAIN
-```
-
-These are observations about the separate private AI-OS integration. This fork note does **not** assert that the private production overlay, funding state, local repair modules or commercial data are contained in this public fork.
-
-[Current state](https://github.com/metacallllc-lang/hermes-autonomous-company/blob/main/CURRENT_STATE.md) · [October 24 reconciliation](https://github.com/metacallllc-lang/hermes-autonomous-company/blob/main/evidence/PRODUCTION_RECONCILIATION_2026-10-24.md) · [Traction](https://github.com/metacallllc-lang/hermes-autonomous-company/blob/main/TRACTION.md)
+[Current state](https://github.com/metacallllc-lang/hermes-autonomous-company/blob/main/CURRENT_STATE.md) · [October 26 reconciliation](https://github.com/metacallllc-lang/hermes-autonomous-company/blob/main/evidence/PRODUCTION_RECONCILIATION_2026-10-26.md) · [Traction](https://github.com/metacallllc-lang/hermes-autonomous-company/blob/main/TRACTION.md)
 
 ### Release provenance caution
 
