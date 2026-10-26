@@ -4,7 +4,7 @@
 
 # Hermes Agent ☤
 
-> **Fork context:** MetaBot / MetaCall operating evidence is reconciled through October 24, 2026 in [FORK_NOTES.md](FORK_NOTES.md). The latest private-company boundary includes capability-scoped route evidence, production admission/revocation, and a real Step-3.7 CRO production failure; the current production CEO route is NONE. Private AI-OS changes are not asserted to be included in this fork; upstream Hermes documentation continues below.
+> **Fork context:** MetaBot / MetaCall operating evidence is reconciled through October 26, 2026 in [FORK_NOTES.md](FORK_NOTES.md). The separate private-company boundary now includes recent exactly-one-gateway/cron acceptance, bounded free-route admission, a truthfully reconciled executive assignment that never executed, commercially READY send/reply rails, configured-but-not-yet-live-verified payment collection, and explicit Command Center/read-side uncertainty. Private AI-OS changes are not asserted to be included in this fork; upstream Hermes documentation continues below.
 <p align="center">
   <a href="https://hermes-agent.nousresearch.com/">Hermes Agent</a> | <a href="https://hermes-agent.nousresearch.com/">Hermes Desktop</a>
 </p>
