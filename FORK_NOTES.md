@@ -2,6 +2,14 @@
 
 This is a fork of [Nous Research's Hermes Agent](https://github.com/NousResearch/hermes-agent). Upstream documentation describes Hermes; the separate MetaBot / MetaCall operating record describes the private AI-OS integration. This note does not assert that this fork contains the private integration, production repair overlay, funding database, paid-only routing guard, or private commercial state. The deployed production pin is not a statement of this fork branch's HEAD. No upstream code or product semantics are changed by this documentation update.
 
+## Later October 29 qualification — 21:25 UTC
+
+The separate private runtime admitted `inclusionai/ling-3.1-flash:free` after independently verified native TOOL and inert CEO sessions, then enabled delegation and cleared the satisfied model-wake hold. A proof-expiry bypass and a hold-recording race were repaired privately. These are private integration results, not code shipped by this fork. Live production C-suite completion remains under verification. [Dated audit](https://github.com/metacallllc-lang/hermes-autonomous-company/blob/main/evidence/COMPANY_AUDIT_2026-10-29.md). Earlier route-unavailable/paused checkpoints below are historical.
+
+## Later October 29 observation — deterministic wake completion
+
+The separate private company launcher completed at 21:01:32 UTC with `MODEL_WAKE_HELD`, zero inference calls and no event acknowledgements. Its state/health producers ran with delegation paused, and the observer verified the corresponding launcher completion. This does not establish live CEO/C-suite autonomy and is not code shipped by this public fork. [Sanitized audit](https://github.com/metacallllc-lang/hermes-autonomous-company/blob/main/evidence/COMPANY_AUDIT_2026-10-29.md).
+
 ## Separate MetaBot operating milestone — October 29, 2026
 
 The private MetaBot/MetaCall Windows runtime now has two distinct owner controls: a governed C-suite delegation pause and a company-compute OFF/PARKED mode. In scoped acceptance, Windows-authenticated owner actions, audit/idempotency behavior, blocked worker restarts and zero identified executive processes while parked were observed. Whole-machine CPU varied considerably, so no system-wide performance optimization is claimed.
