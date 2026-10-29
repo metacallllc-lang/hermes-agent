@@ -4,6 +4,8 @@
 
 # Hermes Agent ☤
 
+> **October 29 MetaBot milestone (separate private runtime):** Owner-authenticated company-compute OFF/PARKED and C-suite delegation pause passed scoped local acceptance. This is **not** a claim that these controls are implemented in this public fork. The CEO inference route remains unavailable; paid customer/revenue outcomes are unproven. [Read the current evidence and caveats](https://github.com/metacallllc-lang/hermes-autonomous-company/blob/main/evidence/OWNER_RESOURCE_CONTROL_2026-10-29.md). The upstream Hermes README follows unchanged.
+
 > **Fork context:** MetaBot / MetaCall operating evidence is reconciled through October 26, 2026 in [FORK_NOTES.md](FORK_NOTES.md). The separate private-company boundary now includes recent exactly-one-gateway/cron acceptance, bounded free-route admission, a truthfully reconciled executive assignment that never executed, commercially READY send/reply rails, configured-but-not-yet-live-verified payment collection, and explicit Command Center/read-side uncertainty. Private AI-OS changes are not asserted to be included in this fork; upstream Hermes documentation continues below.
 <p align="center">
   <a href="https://hermes-agent.nousresearch.com/">Hermes Agent</a> | <a href="https://hermes-agent.nousresearch.com/">Hermes Desktop</a>
