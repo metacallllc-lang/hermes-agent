@@ -1,5 +1,7 @@
 # MetaBot / MetaCall fork context
 
+**Current availability — October 29, 22:14 UTC:** the provider withdrew the newly qualified free model. The production wake correctly refused unavailable current price evidence. Full autonomous C-suite execution remains blocked; delegation permission is enabled, while a capacity hold preserves pending events and existing scheduled checks re-evaluate normal free admission. The earlier qualification checkpoint below remains historical evidence. [Current audit and build limits](https://github.com/metacallllc-lang/hermes-autonomous-company/blob/main/evidence/COMPANY_AUDIT_2026-10-29.md).
+
 This is a fork of [Nous Research's Hermes Agent](https://github.com/NousResearch/hermes-agent). Upstream documentation describes Hermes; the separate MetaBot / MetaCall operating record describes the private AI-OS integration. This note does not assert that this fork contains the private integration, production repair overlay, funding database, paid-only routing guard, or private commercial state. The deployed production pin is not a statement of this fork branch's HEAD. No upstream code or product semantics are changed by this documentation update.
 
 ## Later October 29 qualification — 21:25 UTC
