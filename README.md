@@ -1,4 +1,7 @@
 <p align="center">
+
+**Current availability — October 29, 22:14 UTC:** the provider withdrew the newly qualified free model. The production wake correctly refused unavailable current price evidence. Full autonomous C-suite execution remains blocked; delegation permission is enabled, while a capacity hold preserves pending events and existing scheduled checks re-evaluate normal free admission. The earlier qualification checkpoint below remains historical evidence. [Current audit and build limits](https://github.com/metacallllc-lang/hermes-autonomous-company/blob/main/evidence/COMPANY_AUDIT_2026-10-29.md).
+
   <img src="assets/banner.png" alt="Hermes Agent" width="100%">
 </p>
 
