@@ -2,6 +2,16 @@
 
 This is a fork of [Nous Research's Hermes Agent](https://github.com/NousResearch/hermes-agent). Upstream documentation describes Hermes; the separate MetaBot / MetaCall operating record describes the private AI-OS integration. This note does not assert that this fork contains the private integration, production repair overlay, funding database, paid-only routing guard, or private commercial state. The deployed production pin is not a statement of this fork branch's HEAD. No upstream code or product semantics are changed by this documentation update.
 
+## Separate MetaBot operating milestone — October 29, 2026
+
+The private MetaBot/MetaCall Windows runtime now has two distinct owner controls: a governed C-suite delegation pause and a company-compute OFF/PARKED mode. In scoped acceptance, Windows-authenticated owner actions, audit/idempotency behavior, blocked worker restarts and zero identified executive processes while parked were observed. Whole-machine CPU varied considerably, so no system-wide performance optimization is claimed.
+
+**Production CEO inference remained unavailable** at the latest verification: the previously qualified model evidence did not meet current independent TOOL + CEO admission rules. No real paid customer/revenue or restored 24/7 executive operation was proven; parked schedules are intentionally inactive.
+
+**Important fork boundary:** the controls and private runtime code are not asserted to be present in this public Hermes Agent fork, and this note does not change or endorse upstream Nous Research behavior. The private offer and held Sandbox Alpha artifacts remain unpublished.
+
+[Sanitized October 29 milestone](https://github.com/metacallllc-lang/hermes-autonomous-company/blob/main/evidence/OWNER_RESOURCE_CONTROL_2026-10-29.md) · [Evidence and limits](https://github.com/metacallllc-lang/hermes-autonomous-company/blob/main/CURRENT_STATE.md) · [Sponsor/research opportunities](https://github.com/metacallllc-lang/hermes-autonomous-company/blob/main/SPONSORSHIP.md).
+
 ## Current milestone — October 26, 2026
 
 The separately operated MetaBot / MetaCall environment is now prioritizing **commercial conversion over broad infrastructure rebuilding** while preserving the fork boundary: these are observations about the private AI-OS integration, not claims that this public fork contains those private modules.
