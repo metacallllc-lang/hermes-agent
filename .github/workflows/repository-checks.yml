@@ -1,0 +1,11 @@
+name: Repository evidence and links
+on: [push, pull_request, workflow_dispatch]
+permissions:
+  contents: read
+jobs:
+  documents:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - run: python3 .github/scripts/check_docs.py

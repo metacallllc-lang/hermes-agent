@@ -4,6 +4,10 @@
 
 # Hermes Agent ☤
 
+> **Separate private-runtime update, October 29 at 21:25 UTC:** an exact free route passed independent TOOL + inert CEO qualification, delegation was enabled and the satisfied model-wake hold cleared. Live C-suite completion remains under verification. These private repairs are not code in this fork. [Dated audit](https://github.com/metacallllc-lang/hermes-autonomous-company/blob/main/evidence/COMPANY_AUDIT_2026-10-29.md). Earlier unavailable/paused observations below are historical.
+
+> **Later October 29 observation:** The separate private company launcher completed its deterministic pass with zero inference calls and a verified model-wake hold. Executive autonomy remains unproven at that checkpoint. [Audit and build boundary](https://github.com/metacallllc-lang/hermes-autonomous-company/blob/main/evidence/COMPANY_AUDIT_2026-10-29.md).
+
 > **October 29 MetaBot milestone (separate private runtime):** Owner-authenticated company-compute OFF/PARKED and C-suite delegation pause passed scoped local acceptance. This is **not** a claim that these controls are implemented in this public fork. The CEO inference route remains unavailable; paid customer/revenue outcomes are unproven. [Read the current evidence and caveats](https://github.com/metacallllc-lang/hermes-autonomous-company/blob/main/evidence/OWNER_RESOURCE_CONTROL_2026-10-29.md). The upstream Hermes README follows unchanged.
 
 > **Fork context:** MetaBot / MetaCall operating evidence is reconciled through October 26, 2026 in [FORK_NOTES.md](FORK_NOTES.md). The separate private-company boundary now includes recent exactly-one-gateway/cron acceptance, bounded free-route admission, a truthfully reconciled executive assignment that never executed, commercially READY send/reply rails, configured-but-not-yet-live-verified payment collection, and explicit Command Center/read-side uncertainty. Private AI-OS changes are not asserted to be included in this fork; upstream Hermes documentation continues below.
