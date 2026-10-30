@@ -55,3 +55,20 @@ def test_canary_jobs_cannot_tag_publish_or_prune_from_an_integration_fork():
         context["github"]["repository"] = "example/integration-fork"
     context["github"].update(repository="NousResearch/hermes-agent", ref_name="feature")
     assert not gha.condition(workflow["jobs"]["tag"]["if"], context)
+
+
+def test_fork_worker_limits_fit_standard_runners_without_dropping_checks():
+    os_workflow = yaml.safe_load((WORKFLOWS / "tests-os.yml").read_text(encoding="utf-8"))
+    js_workflow = yaml.safe_load((WORKFLOWS / "js-tests.yml").read_text(encoding="utf-8"))
+    os_step = next(step for step in os_workflow["jobs"]["os-tests"]["steps"]
+                   if "HERMES_TEST_WORKERS" in step.get("env", {}))
+    js_step = next(step for step in js_workflow["jobs"]["check"]["steps"]
+                   if "run-workspace-checks.mjs" in step.get("run", ""))
+    for repository, workers, concurrency in [("example/fork", "2", "1"),
+                                              ("NousResearch/hermes-agent", "16", "32")]:
+        for arch in ("X64", "ARM64"):
+            context = {"github": {"repository": repository}, "matrix": {"marker": "windows"},
+                       "runner": {"arch": arch}}
+            assert str(gha.render(os_step["env"]["HERMES_TEST_WORKERS"], context)) == workers
+            assert gha.render(js_step["run"], context).split() == [
+                "node", ".github/scripts/run-workspace-checks.mjs", "--concurrency", concurrency]

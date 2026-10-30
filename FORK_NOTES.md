@@ -62,6 +62,13 @@ The upstream repository retains its larger-runner labels. Test jobs, matrices,
 commands, required checks and platform architectures are preserved. The change
 addresses jobs queued without a runner; it is not evidence that every test passes.
 Standard runners can take longer than the upstream machines.
+Fork Windows tests use two workers, and workspace JS checks run one at a time,
+so nested test processes fit standard-runner capacity. Upstream keeps its larger
+worker budget. All checks still run and retain their assertions and deadlines.
+
+The Windows updater's Git recovery also discovers real Git binaries in active
+versioned PM tool directories. It still probes each candidate and preserves the
+existing fallback when none can execute; discovery does not install a tool.
 
 The inherited canary tag/draft and pruning jobs run only in the upstream repository.
 They require upstream release infrastructure and must not automatically publish
