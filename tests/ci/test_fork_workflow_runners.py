@@ -1,0 +1,57 @@
+"""Replay runner and publication routing for upstream and an unprovisioned fork."""
+from pathlib import Path
+
+import hermes_yaml as yaml
+
+from tests.ci import _gha_expr as gha
+
+WORKFLOWS = Path(__file__).resolve().parents[2] / ".github" / "workflows"
+STANDARD = {
+    "ubuntu-latest-32-core": "ubuntu-latest",
+    "windows-latest-32-core": "windows-latest",
+    "windows-latest-32-arm-core": "windows-11-arm",
+}
+
+
+def placements(value):
+    if isinstance(value, dict):
+        for key, item in value.items():
+            if key in {"runner", "runs-on"}:
+                yield from item if isinstance(item, list) else [item]
+            else:
+                yield from placements(item)
+    elif isinstance(value, list):
+        for item in value:
+            yield from placements(item)
+
+
+def test_runner_routing_preserves_os_and_architecture_without_larger_runner_access():
+    exercised = False
+    for path in WORKFLOWS.glob("*.yml"):
+        workflow = yaml.safe_load(path.read_text(encoding="utf-8"))
+        for value in placements(workflow):
+            if not any(label in str(value) for label in STANDARD):
+                continue
+            for arch in ("x64", "arm64"):
+                context = {"inputs": {"arch": arch}, "github": {"repository": "NousResearch/hermes-agent"}}
+                upstream = gha.render(value, context)
+                context["github"]["repository"] = "example/integration-fork"
+                fork = gha.render(value, context)
+                assert upstream in STANDARD, (path.name, value, upstream)
+                assert fork == STANDARD[upstream], (path.name, arch, fork)
+                exercised = True
+    assert exercised, "No runner routing was exercised"
+
+
+def test_canary_jobs_cannot_tag_publish_or_prune_from_an_integration_fork():
+    workflow = yaml.safe_load((WORKFLOWS / "canary-release.yml").read_text(encoding="utf-8"))
+    context = {"github": {"repository": "example/integration-fork", "ref_name": "main",
+                          "event": {"repository": {"default_branch": "main"}}},
+               "needs": {"tag": {"result": "success"}}, "__status__": {"always": True}}
+    for name in ("tag", "prune"):
+        assert not gha.condition(workflow["jobs"][name]["if"], context), name
+        context["github"]["repository"] = "NousResearch/hermes-agent"
+        assert gha.condition(workflow["jobs"][name]["if"], context), name
+        context["github"]["repository"] = "example/integration-fork"
+    context["github"].update(repository="NousResearch/hermes-agent", ref_name="feature")
+    assert not gha.condition(workflow["jobs"]["tag"]["if"], context)

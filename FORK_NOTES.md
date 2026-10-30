@@ -53,3 +53,20 @@ For the separate MetaBot runtime, a stable version label is therefore not suffic
 [Current state](https://github.com/metacallllc-lang/hermes-autonomous-company/blob/main/CURRENT_STATE.md) · [October 24 reconciliation](https://github.com/metacallllc-lang/hermes-autonomous-company/blob/main/evidence/PRODUCTION_RECONCILIATION_2026-10-24.md) · [Traction](https://github.com/metacallllc-lang/hermes-autonomous-company/blob/main/TRACTION.md)
 
 These observations concern the separately operated company environment. They do not establish upstream Hermes guarantees, fork-wide acceptance, or upstream endorsement. The public record is sanitized; private implementation and operational artifacts are not included here.
+
+
+## Fork workflow capacity — 2026-10-30
+
+This fork uses standard GitHub-hosted Linux, Windows x64 and Windows ARM64 runners.
+The upstream repository retains its larger-runner labels. Test jobs, matrices,
+commands, required checks and platform architectures are preserved. The change
+addresses jobs queued without a runner; it is not evidence that every test passes.
+Standard runners can take longer than the upstream machines.
+
+The inherited canary tag/draft and pruning jobs run only in the upstream repository.
+They require upstream release infrastructure and must not automatically publish
+this integration fork. This does not authorize a MetaBot release or change any
+private company execution permission.
+
+References: [standard runner labels](https://docs.github.com/en/actions/reference/runners/github-hosted-runners)
+and [larger-runner billing](https://docs.github.com/en/actions/concepts/runners/larger-runners).
