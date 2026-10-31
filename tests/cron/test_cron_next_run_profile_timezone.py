@@ -30,11 +30,24 @@ def _fresh_tz_cache(monkeypatch):
     hermes_time.reset_cache()
 
 
+@pytest.mark.parametrize(
+    "frozen_instant",
+    ["2026-03-07T20:00:00+00:00", "2026-10-31T20:00:00+00:00"],
+    ids=["spring-forward", "fall-back"],
+)
 def test_foreign_process_tick_persists_owning_profile_offset(
-    tmp_path, monkeypatch
+    tmp_path, monkeypatch, frozen_instant
 ):
     """next_run_at persisted during a multiplex tick uses the ticked
     profile's timezone, not the backend process's."""
+    instant = datetime.fromisoformat(frozen_instant)
+
+    class FrozenDateTime(datetime):
+        @classmethod
+        def now(cls, tz=None):
+            return instant.astimezone(tz)
+
+    monkeypatch.setattr(hermes_time, "datetime", FrozenDateTime)
     backend_home = tmp_path / "backend"  # desktop backend's own profile: UTC
     profile_a = tmp_path / "north-caribbean"  # job-owning profile: Eastern
     backend_home.mkdir()
@@ -70,7 +83,9 @@ def test_foreign_process_tick_persists_owning_profile_offset(
         reset_hermes_home_override(token)
 
     next_run = datetime.fromisoformat(job["next_run_at"])
-    expected_offset = datetime.now(ZoneInfo("America/New_York")).utcoffset()
+    # The next occurrence can cross a DST boundary. Compare the owning zone at
+    # that occurrence, not the offset of the day on which the test happens to run.
+    expected_offset = next_run.astimezone(ZoneInfo("America/New_York")).utcoffset()
     assert next_run.utcoffset() == expected_offset, (
         f"next_run_at {job['next_run_at']} persisted with foreign offset "
         f"{next_run.utcoffset()} instead of the owning profile's "
