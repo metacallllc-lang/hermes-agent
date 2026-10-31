@@ -15,5 +15,5 @@ export default function setup(): () => void {
   process.env.TEMP = root
   process.env.TMP = root
 
-  return () => fs.rmSync(root, { recursive: true, force: true })
+  return () => fs.rmSync(root, { recursive: true, force: true, maxRetries: 10, retryDelay: 100 })
 }

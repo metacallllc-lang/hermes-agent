@@ -573,6 +573,16 @@ def _portable_git_candidates() -> list:
     candidates = []
     with suppress(Exception):
         candidates += [root / "git" / "mingw64" / "libexec" / "git-core" / "git.exe" for root in (get_default_hermes_root(), Path(get_hermes_home()))]
+    # PM publishes versioned tool directories outside the profile home. Find
+    # their real binaries through the active PATH without installing anything.
+    import os
+    for entry in os.get_exec_path():
+        directory = Path(entry)
+        if directory.name.lower() == "git-core":
+            candidates.append(directory / "git.exe")
+        elif directory.name.lower() in {"cmd", "bin"}:
+            candidates.extend(directory.parent / arch / "libexec" / "git-core" / "git.exe"
+                              for arch in ("clangarm64", "mingw64", "mingw32"))
     return candidates
 
 

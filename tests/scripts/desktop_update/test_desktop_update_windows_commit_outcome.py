@@ -14,6 +14,7 @@ from pathlib import Path
 import subprocess
 import sys
 import time
+import threading
 
 import pytest
 
@@ -152,12 +153,19 @@ def test_nonzero_exit_after_the_commit_point_is_installed_with_a_followup(tmp_pa
         assert (result['ok'], result['exit_code']) == (False, 130), result
 
 
-_TIMED_CHECKOUT_HOLDER = """
+_RELEASED_CHECKOUT_HOLDER = """
 import msvcrt, os, sys, time
+from pathlib import Path
 fd = os.open(sys.argv[1], os.O_RDWR | os.O_CREAT | os.O_BINARY, 0o644)
 os.lseek(fd, 1 << 20, os.SEEK_SET)
 msvcrt.locking(fd, msvcrt.LK_NBLCK, 1)   # hermes_cli/update_lock.py::_try_lock's byte
-time.sleep(float(sys.argv[2]))
+print('LOCKED', flush=True)
+deadline = time.monotonic() + 120
+while not Path(sys.argv[2]).exists():
+    if time.monotonic() >= deadline:
+        raise SystemExit('fixture release deadline exceeded')
+    time.sleep(0.02)
+os.close(fd)
 """
 
 
@@ -166,19 +174,51 @@ def test_result_finished_at_is_stamped_after_the_r6_release_wait(tmp_path: Path)
     # The relaunched Desktop drops a non-manual result whose finished_at is 30 minutes old; the
     # R6 wait lasts up to 2 h. The result must carry the time the hand-off actually finished.
     holders = []
+    watchers = []
+    release = tmp_path / 'release-checkout-lock'
+    observed = {}
 
-    def hold_checkout(_home: Path, install: Path) -> None:
-        holders.append((subprocess.Popen([sys.executable, '-c', _TIMED_CHECKOUT_HOLDER,
-                                          str(install / '.hermes-update.lock'), '25']), time.time() + 25))
+    def hold_checkout(home: Path, install: Path) -> None:
+        holder = subprocess.Popen([sys.executable, '-c', _RELEASED_CHECKOUT_HOLDER,
+                                   str(install / '.hermes-update.lock'), str(release)],
+                                  stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+        holders.append(holder)
+        assert holder.stdout.readline().strip() == 'LOCKED', 'fixture never acquired checkout lock'
+
+        def release_after_wait_begins() -> None:
+            log = home / 'logs/desktop-update-handoff.log'
+            deadline = time.monotonic() + 120
+            while time.monotonic() < deadline:
+                try:
+                    waiting = 'keeping the update marker' in log.read_text(encoding='utf-8-sig')
+                except OSError:
+                    waiting = False
+                if waiting:
+                    observed['released_at'] = time.time()
+                    release.touch()
+                    return
+                time.sleep(0.02)
+            release.touch()  # release only this fixture; lack of an R6 signal still fails below
+
+        watcher = threading.Thread(target=release_after_wait_begins, daemon=True)
+        watchers.append(watcher)
+        watcher.start()
     try:
         code, out, _, result, home = _handoff(tmp_path, '-NoGateway', prepare=hold_checkout)
     finally:
-        for proc, _ in holders:
-            proc.kill(); proc.wait()
+        release.touch()
+        for watcher in watchers:
+            watcher.join(timeout=5)
+        for proc in holders:
+            if proc.poll() is None:
+                proc.kill()
+            proc.wait(timeout=10)
+            proc.stdout.close(); proc.stderr.close()
     assert code == 0, out
     log = (home / 'logs/desktop-update-handoff.log').read_text(encoding='utf-8-sig')
     assert 'keeping the update marker' in log, log
-    assert result['ok'] is True and result['finished_at'] >= int(holders[0][1]) - 1, result
+    assert 'released_at' in observed, 'handoff never reached the actual R6 release wait'
+    assert result['ok'] is True and result['finished_at'] >= int(observed['released_at']) - 1, result
 
 
 @pytest.mark.platforms('windows')

@@ -1,4 +1,26 @@
+**October 31 commercial repair:** local discovery now distinguishes contact records from verified buyer demand and admits bounded internal scope review. Compute and delegation were enabled at the dated acceptance; all six roles selected free models. No client, collected revenue or funding award is established. [Dated evidence and limits](https://github.com/metacallllc-lang/hermes-autonomous-company/blob/main/evidence/COMPANY_AUDIT_2026-10-31.md). These private integration repairs are not code shipped by this public fork. Earlier checkpoints below remain historical.
+
 # MetaBot / MetaCall fork context
+
+## Standard-runner completion budgets — October 31
+
+The fork retains every selected check and platform. Its serial JavaScript job
+allows 45 minutes, and Windows allows 60 minutes with a bounded 600 seconds per
+test file. The preceding hosted JavaScript payload passed all ten checks at its
+old deadline; Windows handoff files exceeded their old 300-second file budget.
+Upstream runner budgets remain unchanged. The R6 finished-time fixture now holds
+its real checkout lock until the handoff actually reaches the release wait,
+instead of assuming startup finishes before a fixed sleep expires.
+
+Local validation passed all twelve canonical source checks and 39 Windows handoff
+cases. Two further local cases could not obtain their required protected-process
+fixture; they remain required in hosted Windows acceptance. No complete hosted
+build acceptance is claimed before the final commit's checks finish.
+
+The owning-profile cron regression now uses fixed spring-forward and fall-back
+instants and checks the timezone offset at the next scheduled occurrence. Comparing
+that future occurrence with today's offset caused a false failure on the day
+before a daylight-saving transition; production scheduling behavior is unchanged.
 
 **Current availability — October 29, 22:14 UTC:** the provider withdrew the newly qualified free model. The production wake correctly refused unavailable current price evidence. Full autonomous C-suite execution remains blocked; delegation permission is enabled, while a capacity hold preserves pending events and existing scheduled checks re-evaluate normal free admission. The earlier qualification checkpoint below remains historical evidence. [Current audit and build limits](https://github.com/metacallllc-lang/hermes-autonomous-company/blob/main/evidence/COMPANY_AUDIT_2026-10-29.md).
 
@@ -53,3 +75,34 @@ For the separate MetaBot runtime, a stable version label is therefore not suffic
 [Current state](https://github.com/metacallllc-lang/hermes-autonomous-company/blob/main/CURRENT_STATE.md) · [October 24 reconciliation](https://github.com/metacallllc-lang/hermes-autonomous-company/blob/main/evidence/PRODUCTION_RECONCILIATION_2026-10-24.md) · [Traction](https://github.com/metacallllc-lang/hermes-autonomous-company/blob/main/TRACTION.md)
 
 These observations concern the separately operated company environment. They do not establish upstream Hermes guarantees, fork-wide acceptance, or upstream endorsement. The public record is sanitized; private implementation and operational artifacts are not included here.
+
+
+## Fork workflow capacity — 2026-10-30
+
+This fork uses standard GitHub-hosted Linux, Windows x64 and Windows ARM64 runners.
+The upstream repository retains its larger-runner labels. Test jobs, matrices,
+commands, required checks and platform architectures are preserved. The change
+addresses jobs queued without a runner; it is not evidence that every test passes.
+Standard runners can take longer than the upstream machines.
+Fork Windows tests use two workers, and workspace JS checks run one at a time,
+so nested test processes fit standard-runner capacity. Upstream keeps its larger
+worker budget. All checks still run and retain their assertions and deadlines.
+The full Python suite uses eight exhaustive slices with four workers each on
+the fork; upstream retains two slices with 32 workers. The same canonical
+partitioner selects every test file once. Fork process-heavy E2E lanes use two
+workers rather than the upstream six-worker budget.
+The SDK smoke matrix covers x64 and ARM64 hosts; the inherited duplicate ARM64
+entry was corrected. Temporary SDK cleanup allows bounded filesystem retries
+for transient Windows file locks and still fails if the files stay locked.
+
+The Windows updater's Git recovery also discovers real Git binaries in active
+versioned PM tool directories. It still probes each candidate and preserves the
+existing fallback when none can execute; discovery does not install a tool.
+
+The inherited canary tag/draft and pruning jobs run only in the upstream repository.
+They require upstream release infrastructure and must not automatically publish
+this integration fork. This does not authorize a MetaBot release or change any
+private company execution permission.
+
+References: [standard runner labels](https://docs.github.com/en/actions/reference/runners/github-hosted-runners)
+and [larger-runner billing](https://docs.github.com/en/actions/concepts/runners/larger-runners).
