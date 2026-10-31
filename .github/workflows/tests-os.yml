@@ -73,7 +73,7 @@ jobs:
   os-tests:
     name: ${{ matrix.name }}
     runs-on: ${{ matrix.runner }}
-    timeout-minutes: ${{ matrix.timeout || 30 }}
+    timeout-minutes: ${{ github.repository != 'NousResearch/hermes-agent' && matrix.marker == 'windows' && 60 || matrix.timeout || 30 }}
     strategy:
       fail-fast: false
       matrix:
@@ -188,6 +188,9 @@ jobs:
           # These files spawn nested PowerShell trees. CPU-count parallelism
           # starves cold child startup before the fixture's idle deadline.
           HERMES_TEST_WORKERS: ${{ matrix.marker == 'windows' && (github.repository == 'NousResearch/hermes-agent' && '16' || '2') || '' }}
+          # Real-process handoff files passed individual cases but exceeded the
+          # 300s file budget on standard runners. Keep every test and a finite cap.
+          HERMES_TEST_FILE_TIMEOUT: ${{ matrix.marker == 'windows' && github.repository != 'NousResearch/hermes-agent' && '600' || '300' }}
           HERMES_TEST_SLICE: ${{ matrix.slice || '' }}
           # Belt-and-suspenders with tests/conftest.py's env blanking: no
           # test may reach a real provider API.

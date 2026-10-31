@@ -2,6 +2,21 @@
 
 # MetaBot / MetaCall fork context
 
+## Standard-runner completion budgets — October 31
+
+The fork retains every selected check and platform. Its serial JavaScript job
+allows 45 minutes, and Windows allows 60 minutes with a bounded 600 seconds per
+test file. The preceding hosted JavaScript payload passed all ten checks at its
+old deadline; Windows handoff files exceeded their old 300-second file budget.
+Upstream runner budgets remain unchanged. The R6 finished-time fixture now holds
+its real checkout lock until the handoff actually reaches the release wait,
+instead of assuming startup finishes before a fixed sleep expires.
+
+Local validation passed all twelve canonical source checks and 39 Windows handoff
+cases. Two further local cases could not obtain their required protected-process
+fixture; they remain required in hosted Windows acceptance. No complete hosted
+build acceptance is claimed before the final commit's checks finish.
+
 **Current availability — October 29, 22:14 UTC:** the provider withdrew the newly qualified free model. The production wake correctly refused unavailable current price evidence. Full autonomous C-suite execution remains blocked; delegation permission is enabled, while a capacity hold preserves pending events and existing scheduled checks re-evaluate normal free admission. The earlier qualification checkpoint below remains historical evidence. [Current audit and build limits](https://github.com/metacallllc-lang/hermes-autonomous-company/blob/main/evidence/COMPANY_AUDIT_2026-10-29.md).
 
 This is a fork of [Nous Research's Hermes Agent](https://github.com/NousResearch/hermes-agent). Upstream documentation describes Hermes; the separate MetaBot / MetaCall operating record describes the private AI-OS integration. This note does not assert that this fork contains the private integration, production repair overlay, funding database, paid-only routing guard, or private commercial state. The deployed production pin is not a statement of this fork branch's HEAD. No upstream code or product semantics are changed by this documentation update.
