@@ -72,3 +72,40 @@ def test_fork_worker_limits_fit_standard_runners_without_dropping_checks():
             assert str(gha.render(os_step["env"]["HERMES_TEST_WORKERS"], context)) == workers
             assert gha.render(js_step["run"], context).split() == [
                 "node", ".github/scripts/run-workspace-checks.mjs", "--concurrency", concurrency]
+
+
+def test_windows_sdk_covers_distinct_native_x64_and_arm64_hosts():
+    workflow = yaml.safe_load((WORKFLOWS / "windows-bundle-sdk.yml").read_text(encoding="utf-8"))
+    runners = workflow["jobs"]["windows-bundle-tools"]["strategy"]["matrix"]["runner"]
+    for repository, expected in [("example/fork", {"windows-latest", "windows-11-arm"}),
+                                  ("NousResearch/hermes-agent", {"windows-latest-32-core", "windows-latest-32-arm-core"})]:
+        assert {gha.render(value, {"github": {"repository": repository}}) for value in runners} == expected
+
+
+def test_linux_fork_slices_cover_the_suite_without_overloading_workers():
+    import tempfile
+
+    from scripts.run_tests_parallel import _slice_files
+
+    job = yaml.safe_load((WORKFLOWS / "tests.yml").read_text(encoding="utf-8"))["jobs"]["test"]
+    step = next(step for step in job["steps"] if "HERMES_TEST_SLICE" in step.get("env", {}))
+    with tempfile.TemporaryDirectory() as directory:
+        root = Path(directory)
+        files = [root / f"test_fixture_{i}.py" for i in range(40)]
+        for file in files:
+            file.write_text("def test_example(): pass\n", encoding="utf-8")
+        for repository, total, workers in [("example/fork", 8, "4"),
+                                           ("NousResearch/hermes-agent", 2, "32")]:
+            context = {"github": {"repository": repository}}
+            slices = gha.render(job["strategy"]["matrix"]["slice"], context)
+            assert slices == list(range(1, total + 1))
+            assert str(gha.render(step["env"]["HERMES_TEST_WORKERS"], context)) == workers
+            selected = []
+            for index in slices:
+                context["matrix"] = {"slice": index}
+                # Force mixed-template interpolation rather than whole-value evaluation.
+                spec = gha.render("slice=" + step["env"]["HERMES_TEST_SLICE"], context).removeprefix("slice=")
+                assert spec == f"{index}/{total}"
+                selected.extend(_slice_files(files, index, total, {}, root))
+            assert len(selected) == len(files)
+            assert set(selected) == set(files)

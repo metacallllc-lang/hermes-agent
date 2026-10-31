@@ -8,7 +8,7 @@ import { batchSignAppTree } from './batch-sign-binaries.mjs'
 
 const directories = []
 afterEach(() => {
-  for (const directory of directories.splice(0)) fs.rmSync(directory, { recursive: true, force: true })
+  for (const directory of directories.splice(0)) fs.rmSync(directory, { recursive: true, force: true, maxRetries: 10, retryDelay: 100 })
 })
 
 // The adapter models the builder's installer, not an existing cache. The

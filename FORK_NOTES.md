@@ -65,6 +65,13 @@ Standard runners can take longer than the upstream machines.
 Fork Windows tests use two workers, and workspace JS checks run one at a time,
 so nested test processes fit standard-runner capacity. Upstream keeps its larger
 worker budget. All checks still run and retain their assertions and deadlines.
+The full Python suite uses eight exhaustive slices with four workers each on
+the fork; upstream retains two slices with 32 workers. The same canonical
+partitioner selects every test file once. Fork process-heavy E2E lanes use two
+workers rather than the upstream six-worker budget.
+The SDK smoke matrix covers x64 and ARM64 hosts; the inherited duplicate ARM64
+entry was corrected. Temporary SDK cleanup allows bounded filesystem retries
+for transient Windows file locks and still fails if the files stay locked.
 
 The Windows updater's Git recovery also discovers real Git binaries in active
 versioned PM tool directories. It still probes each candidate and preserves the
