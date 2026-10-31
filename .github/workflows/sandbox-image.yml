@@ -45,7 +45,7 @@ jobs:
       matrix:
         include:
           - arch: amd64
-            runner: ubuntu-latest-32-core
+            runner: ${{ github.repository == 'NousResearch/hermes-agent' && 'ubuntu-latest-32-core' || 'ubuntu-latest' }}
             platform: linux/amd64
           - arch: arm64
             runner: ubuntu-latest-32-arm-core
@@ -83,7 +83,7 @@ jobs:
       matrix:
         include:
           - arch: amd64
-            runner: ubuntu-latest-32-core
+            runner: ${{ github.repository == 'NousResearch/hermes-agent' && 'ubuntu-latest-32-core' || 'ubuntu-latest' }}
             platform: linux/amd64
           - arch: arm64
             runner: ubuntu-latest-32-arm-core

@@ -53,3 +53,34 @@ For the separate MetaBot runtime, a stable version label is therefore not suffic
 [Current state](https://github.com/metacallllc-lang/hermes-autonomous-company/blob/main/CURRENT_STATE.md) · [October 24 reconciliation](https://github.com/metacallllc-lang/hermes-autonomous-company/blob/main/evidence/PRODUCTION_RECONCILIATION_2026-10-24.md) · [Traction](https://github.com/metacallllc-lang/hermes-autonomous-company/blob/main/TRACTION.md)
 
 These observations concern the separately operated company environment. They do not establish upstream Hermes guarantees, fork-wide acceptance, or upstream endorsement. The public record is sanitized; private implementation and operational artifacts are not included here.
+
+
+## Fork workflow capacity — 2026-10-30
+
+This fork uses standard GitHub-hosted Linux, Windows x64 and Windows ARM64 runners.
+The upstream repository retains its larger-runner labels. Test jobs, matrices,
+commands, required checks and platform architectures are preserved. The change
+addresses jobs queued without a runner; it is not evidence that every test passes.
+Standard runners can take longer than the upstream machines.
+Fork Windows tests use two workers, and workspace JS checks run one at a time,
+so nested test processes fit standard-runner capacity. Upstream keeps its larger
+worker budget. All checks still run and retain their assertions and deadlines.
+The full Python suite uses eight exhaustive slices with four workers each on
+the fork; upstream retains two slices with 32 workers. The same canonical
+partitioner selects every test file once. Fork process-heavy E2E lanes use two
+workers rather than the upstream six-worker budget.
+The SDK smoke matrix covers x64 and ARM64 hosts; the inherited duplicate ARM64
+entry was corrected. Temporary SDK cleanup allows bounded filesystem retries
+for transient Windows file locks and still fails if the files stay locked.
+
+The Windows updater's Git recovery also discovers real Git binaries in active
+versioned PM tool directories. It still probes each candidate and preserves the
+existing fallback when none can execute; discovery does not install a tool.
+
+The inherited canary tag/draft and pruning jobs run only in the upstream repository.
+They require upstream release infrastructure and must not automatically publish
+this integration fork. This does not authorize a MetaBot release or change any
+private company execution permission.
+
+References: [standard runner labels](https://docs.github.com/en/actions/reference/runners/github-hosted-runners)
+and [larger-runner billing](https://docs.github.com/en/actions/concepts/runners/larger-runners).
