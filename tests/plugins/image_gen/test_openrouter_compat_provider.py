@@ -785,13 +785,32 @@ class TestImageApiSurface:
         assert "_retryable" not in result
 
     def test_catalog_models_are_offered_only_by_openrouter(self):
+        """The offline snapshot belongs only to its supported backend."""
         from plugins.image_gen.openrouter import _IMAGE_API_MODELS, _build_providers
 
         by_name = {p.name: p for p in _build_providers()}
-        openrouter_ids = {m["id"] for m in by_name["openrouter"].list_models()}
-        nous_ids = {m["id"] for m in by_name["nous"].list_models()}
+        with patch(_RUNTIME, side_effect=RuntimeError("offline catalog")), \
+             patch("requests.get") as network:
+            openrouter_ids = {m["id"] for m in by_name["openrouter"].list_models()}
+            nous_ids = {m["id"] for m in by_name["nous"].list_models()}
+        network.assert_not_called()
         assert set(_IMAGE_API_MODELS) <= openrouter_ids
         assert not (set(_IMAGE_API_MODELS) & nous_ids)
+
+    @pytest.mark.parametrize("backend", ["openrouter", "nous"])
+    def test_live_catalog_does_not_restore_missing_snapshot_models(self, backend):
+        from plugins.image_gen.openrouter import _IMAGE_API_MODELS, _build_providers
+
+        provider = {p.name: p for p in _build_providers()}[backend]
+        current_id = "fixture/current-image-model"
+        entries = [{"id": current_id, "architecture": {"output_modalities": ["image"]}}]
+        with patch.object(provider, "_credentials", return_value=("fixture-key", "https://catalog.invalid")), \
+             patch("requests.get", return_value=_mock_models_response(entries)) as network:
+            ids = {m["id"] for m in provider.list_models()}
+        assert ids == {current_id}
+        assert not (set(_IMAGE_API_MODELS) & ids)
+        if backend == "nous":
+            assert [call.args[0] for call in network.call_args_list] == ["https://catalog.invalid/models"]
 
 
 
