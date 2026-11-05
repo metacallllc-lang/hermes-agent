@@ -1,19 +1,32 @@
 <p align="center">
-
-**Current availability — October 29, 22:14 UTC:** the provider withdrew the newly qualified free model. The production wake correctly refused unavailable current price evidence. Full autonomous C-suite execution remains blocked; delegation permission is enabled, while a capacity hold preserves pending events and existing scheduled checks re-evaluate normal free admission. The earlier qualification checkpoint below remains historical evidence. [Current audit and build limits](https://github.com/metacallllc-lang/hermes-autonomous-company/blob/main/evidence/COMPANY_AUDIT_2026-10-29.md).
-
   <img src="assets/banner.png" alt="Hermes Agent" width="100%">
 </p>
 
 # Hermes Agent ☤
 
-> **Separate private-runtime update, October 29 at 21:25 UTC:** an exact free route passed independent TOOL + inert CEO qualification, delegation was enabled and the satisfied model-wake hold cleared. Live C-suite completion remains under verification. These private repairs are not code in this fork. [Dated audit](https://github.com/metacallllc-lang/hermes-autonomous-company/blob/main/evidence/COMPANY_AUDIT_2026-10-29.md). Earlier unavailable/paused observations below are historical.
+## MetaCall fork progress — reviewed November 5, 2026
 
-> **Later October 29 observation:** The separate private company launcher completed its deterministic pass with zero inference calls and a verified model-wake hold. Executive autonomy remains unproven at that checkpoint. [Audit and build boundary](https://github.com/metacallllc-lang/hermes-autonomous-company/blob/main/evidence/COMPANY_AUDIT_2026-10-29.md).
+The public build repair [PR #3](https://github.com/metacallllc-lang/hermes-agent/pull/3)
+is **merged**: standard hosted runners, bounded completion budgets, Windows
+SDK/Git discovery, provider credential compatibility and timezone regression
+coverage. Hosted acceptance belongs to reviewed head `fc1c81404f20`.
 
-> **October 29 MetaBot milestone (separate private runtime):** Owner-authenticated company-compute OFF/PARKED and C-suite delegation pause passed scoped local acceptance. This is **not** a claim that these controls are implemented in this public fork. The CEO inference route remains unavailable; paid customer/revenue outcomes are unproven. [Read the current evidence and caveats](https://github.com/metacallllc-lang/hermes-autonomous-company/blob/main/evidence/OWNER_RESOURCE_CONTROL_2026-10-29.md). The upstream Hermes README follows unchanged.
+The newer [catalog-test and checkout repair #4](https://github.com/metacallllc-lang/hermes-agent/pull/4)
+is **open and unmerged**. Its documentation, Docker and Nix workflows passed;
+aggregate CI remains failed with two macOS jobs cancelled. No checks were waived.
 
-> **Fork context:** MetaBot / MetaCall operating evidence is reconciled through October 26, 2026 in [FORK_NOTES.md](FORK_NOTES.md). The separate private-company boundary now includes recent exactly-one-gateway/cron acceptance, bounded free-route admission, a truthfully reconciled executive assignment that never executed, commercially READY send/reply rails, configured-but-not-yet-live-verified payment collection, and explicit Command Center/read-side uncertainty. Private AI-OS changes are not asserted to be included in this fork; upstream Hermes documentation continues below.
+Separate private MetaBot integration evidence now includes native executive
+completion and automatic continuation, plus a scheduling repair with **57 focused
+checks passing**. That integration is not shipped by this fork. The latest
+complete company audit is **133/149 passing**; separate reruns yield **144/149
+latest results**, with five suites unresolved. November 5 local health is
+**DEGRADED**; cash and recognised revenue are **UNKNOWN**. No new customer,
+payment, funding or sustained commercial autonomy is established.
+
+[Fork history and boundaries](FORK_NOTES.md) ·
+[Completed work and evidence](https://github.com/metacallllc-lang/hermes-autonomous-company/blob/main/evidence/WORK_COMPLETED_2026-11-05.md).
+Upstream Hermes documentation follows.
+
 <p align="center">
   <a href="https://hermes-agent.nousresearch.com/">Hermes Agent</a> | <a href="https://hermes-agent.nousresearch.com/">Hermes Desktop</a>
 </p>

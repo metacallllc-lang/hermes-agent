@@ -1,3 +1,43 @@
+## Work completed — November 5, 2026
+
+Completed milestones include the merged public Hermes build repair, independently
+verified native executive completion and automatic continuation, qualification
+deadline/policy-refresh repairs, and the November 4 scheduling repair with
+**57 focused checks passing**. The latest complete company audit remains
+**133/149 passing**; separate repaired reruns produce **144/149 latest results**,
+with five suites unresolved. These are different validation scopes.
+
+The public fork's [catalog-test repair PR #4](https://github.com/metacallllc-lang/hermes-agent/pull/4)
+and the private recovery archive are still unmerged. The November 5 local health
+artifact reports **DEGRADED**; cash and recognised revenue are **UNKNOWN**. No new
+verified customer conversion, collected payment, funding award or continuous
+commercial autonomy is established. [Completed work, sources and limits](https://github.com/metacallllc-lang/hermes-autonomous-company/blob/main/evidence/WORK_COMPLETED_2026-11-05.md).
+
+All checkpoints below are preserved historical observations, including their
+original use of “current” or “latest”; they are not November 5 runtime telemetry.
+
+
+### Preserved pre-review README context
+
+<p align="center">
+
+**Current availability — October 29, 22:14 UTC:** the provider withdrew the newly qualified free model. The production wake correctly refused unavailable current price evidence. Full autonomous C-suite execution remains blocked; delegation permission is enabled, while a capacity hold preserves pending events and existing scheduled checks re-evaluate normal free admission. The earlier qualification checkpoint below remains historical evidence. [Current audit and build limits](https://github.com/metacallllc-lang/hermes-autonomous-company/blob/main/evidence/COMPANY_AUDIT_2026-10-29.md).
+
+  <img src="assets/banner.png" alt="Hermes Agent" width="100%">
+</p>
+
+# Hermes Agent ☤
+
+> **Separate private-runtime update, October 29 at 21:25 UTC:** an exact free route passed independent TOOL + inert CEO qualification, delegation was enabled and the satisfied model-wake hold cleared. Live C-suite completion remains under verification. These private repairs are not code in this fork. [Dated audit](https://github.com/metacallllc-lang/hermes-autonomous-company/blob/main/evidence/COMPANY_AUDIT_2026-10-29.md). Earlier unavailable/paused observations below are historical.
+
+> **Later October 29 observation:** The separate private company launcher completed its deterministic pass with zero inference calls and a verified model-wake hold. Executive autonomy remains unproven at that checkpoint. [Audit and build boundary](https://github.com/metacallllc-lang/hermes-autonomous-company/blob/main/evidence/COMPANY_AUDIT_2026-10-29.md).
+
+> **October 29 MetaBot milestone (separate private runtime):** Owner-authenticated company-compute OFF/PARKED and C-suite delegation pause passed scoped local acceptance. This is **not** a claim that these controls are implemented in this public fork. The CEO inference route remains unavailable; paid customer/revenue outcomes are unproven. [Read the current evidence and caveats](https://github.com/metacallllc-lang/hermes-autonomous-company/blob/main/evidence/OWNER_RESOURCE_CONTROL_2026-10-29.md). The upstream Hermes README follows unchanged.
+
+> **Fork context:** MetaBot / MetaCall operating evidence is reconciled through October 26, 2026 in [FORK_NOTES.md](FORK_NOTES.md). The separate private-company boundary now includes recent exactly-one-gateway/cron acceptance, bounded free-route admission, a truthfully reconciled executive assignment that never executed, commercially READY send/reply rails, configured-but-not-yet-live-verified payment collection, and explicit Command Center/read-side uncertainty. Private AI-OS changes are not asserted to be included in this fork; upstream Hermes documentation continues below.
+
+---
+
 **October 31 commercial repair:** local discovery now distinguishes contact records from verified buyer demand and admits bounded internal scope review. Compute and delegation were enabled at the dated acceptance; all six roles selected free models. No client, collected revenue or funding award is established. [Dated evidence and limits](https://github.com/metacallllc-lang/hermes-autonomous-company/blob/main/evidence/COMPANY_AUDIT_2026-10-31.md). These private integration repairs are not code shipped by this public fork. Earlier checkpoints below remain historical.
 
 # MetaBot / MetaCall fork context
