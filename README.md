@@ -4,24 +4,29 @@
 
 # Hermes Agent ☤
 
-## MetaCall fork progress — reviewed November 6, 2026
+## MetaCall fork progress — November 6, 2026, recovery update
 
-The public build repair [PR #3](https://github.com/metacallllc-lang/hermes-agent/pull/3)
-is merged. The separate [catalog-test repair PR #4](https://github.com/metacallllc-lang/hermes-agent/pull/4)
-remains open and unmerged.
+The catalog-test repair [PR #4](https://github.com/metacallllc-lang/hermes-agent/pull/4)
+is rebased onto current main. Its affected catalog tests pass (55 tests), and
+the repository's 12 blocking local checks pass. Hosted full CI is a separate
+requirement; the main CI workflow was found manually disabled. The PR stays
+unmerged until the required current checks pass. The earlier [PR #3](https://github.com/metacallllc-lang/hermes-agent/pull/3) is merged.
 
-The private MetaBot integration has started a 48-hour OpenRouter/DeepSeek Flash
-trial for its six executive routes. Native inert TOOL + CEO checks passed, real
-interactive requests are observed, and 41 focused admission/lifecycle checks pass.
-Autonomous executive work and commercial results remain separate measurements;
-private integration changes are not shipped by this public Hermes fork.
+The private company integration has a redesigned dashboard, bounded cycle
+reports, executive ownership and duplicate-execution repairs for Hermes v0.23.
+Two ordinary CRO tasks ran once each on the authorized OpenRouter/DeepSeek
+model and were independently reconciled by the CEO. This is observed internal
+execution, separate from customer acceptance, revenue or self-funding.
 
-The latest complete company audit is 133/149; separate repaired reruns yield
-147/149 latest results, with two historical suites unresolved. This is not a new
-full passing audit. No new customer, collected payment, funding award or
-self-funding is established.
+A fresh complete company audit is in progress against frozen source. Previous
+133/149 and 147/149 figures below describe older source generations and reruns.
+They are not the current audit verdict. The original 48-hour trial deadline
+remains November 8, 10:36 AM Guatemala time. No new customer, collected payment,
+funding award or self-funding is established by these engineering checks.
 
-[Fork notes](FORK_NOTES.md) · [Trial evidence and limits](https://github.com/metacallllc-lang/hermes-autonomous-company/blob/main/evidence/OPENROUTER_TRIAL_2026-11-06.md).
+Private company source is preserved separately; this public fork does not ship
+the company integration. [Project evidence](https://github.com/metacallllc-lang/hermes-autonomous-company/blob/main/PUBLIC_EVIDENCE_INDEX.md).
+
 Upstream Hermes documentation follows.
 
 <p align="center">
