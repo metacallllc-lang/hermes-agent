@@ -1,3 +1,28 @@
+## November 6, 2026 — OpenRouter field trial running
+
+The six executive routes now select **DeepSeek V4.1 Flash 1017 on OpenRouter**.
+Separate inert native TOOL and CEO checks passed using four paid requests;
+ordinary Hermes requests were then observed on that exact provider and model.
+The 48-hour observation window runs **November 6, 10:36 AM → November 8,
+10:36 AM, Guatemala time (UTC−6)**. Interactive activity and autonomous executive
+work are measured separately. Results are pending.
+
+Paid-route, transport and lifecycle verification passed **41 focused checks**.
+The latest complete company audit remains **133/149**; separate repaired reruns
+bring the latest-result view to **147/149**, with two historical evidence suites
+unresolved. This is not a new full passing audit. Earlier source, mailbox,
+scheduling and observer repairs remain scoped engineering evidence.
+
+The public Hermes build repair PR #3 is merged. PR #4 remains open and unmerged;
+private integration changes are not shipped by the public fork. No new verified
+client, collected customer payment, funding award, self-funding or sustained
+commercial autonomy is established by this trial. Earlier records below retain
+their original dates and are historical observations.
+
+[Public trial record](https://github.com/metacallllc-lang/hermes-autonomous-company/blob/main/evidence/OPENROUTER_TRIAL_2026-11-06.md).
+
+---
+
 ## Work completed — November 5, 2026
 
 Completed milestones include the merged public Hermes build repair, independently

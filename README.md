@@ -4,27 +4,24 @@
 
 # Hermes Agent ☤
 
-## MetaCall fork progress — reviewed November 5, 2026
+## MetaCall fork progress — reviewed November 6, 2026
 
 The public build repair [PR #3](https://github.com/metacallllc-lang/hermes-agent/pull/3)
-is **merged**: standard hosted runners, bounded completion budgets, Windows
-SDK/Git discovery, provider credential compatibility and timezone regression
-coverage. Hosted acceptance belongs to reviewed head `fc1c81404f20`.
+is merged. The separate [catalog-test repair PR #4](https://github.com/metacallllc-lang/hermes-agent/pull/4)
+remains open and unmerged.
 
-The newer [catalog-test and checkout repair #4](https://github.com/metacallllc-lang/hermes-agent/pull/4)
-is **open and unmerged**. Its documentation, Docker and Nix workflows passed;
-aggregate CI remains failed with two macOS jobs cancelled. No checks were waived.
+The private MetaBot integration has started a 48-hour OpenRouter/DeepSeek Flash
+trial for its six executive routes. Native inert TOOL + CEO checks passed, real
+interactive requests are observed, and 41 focused admission/lifecycle checks pass.
+Autonomous executive work and commercial results remain separate measurements;
+private integration changes are not shipped by this public Hermes fork.
 
-Separate private MetaBot integration evidence now includes native executive
-completion and automatic continuation, plus a scheduling repair with **57 focused
-checks passing**. That integration is not shipped by this fork. The latest
-complete company audit is **133/149 passing**; separate reruns yield **144/149
-latest results**, with five suites unresolved. November 5 local health is
-**DEGRADED**; cash and recognised revenue are **UNKNOWN**. No new customer,
-payment, funding or sustained commercial autonomy is established.
+The latest complete company audit is 133/149; separate repaired reruns yield
+147/149 latest results, with two historical suites unresolved. This is not a new
+full passing audit. No new customer, collected payment, funding award or
+self-funding is established.
 
-[Fork history and boundaries](FORK_NOTES.md) ·
-[Completed work and evidence](https://github.com/metacallllc-lang/hermes-autonomous-company/blob/main/evidence/WORK_COMPLETED_2026-11-05.md).
+[Fork notes](FORK_NOTES.md) · [Trial evidence and limits](https://github.com/metacallllc-lang/hermes-autonomous-company/blob/main/evidence/OPENROUTER_TRIAL_2026-11-06.md).
 Upstream Hermes documentation follows.
 
 <p align="center">
