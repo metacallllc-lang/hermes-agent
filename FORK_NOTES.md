@@ -18,14 +18,16 @@ runner. Source discovery includes every journey file, with no fail-fast or retri
 upstream retains its full batch and the crash manifest remains required.
 
 The separate private company integration has a responsive VEXO dashboard and
-verified ordinary single-occurrence CEO/executive execution. Its final frozen-source
-audit is **150/159**, with **9 nonpassing** historical,
-offline-integration or snapshot proof findings. Mission evidence hashes now stream
+verified ordinary single-occurrence CEO/executive execution. Its latest complete
+frozen-source audit is **155/163**, with **8 nonpassing** checks. New
+company-side corrections cover lane evidence, supplementary source failures, explicit
+null health values, trigger timing and lazy deployment dependencies. Full historical
+proof and offline integration remain separate from focused and live read-only checks. Mission evidence hashes now stream
 every retained byte with bounded memory and source-change refusal. Overall preparation
 performance and sustained commercial outcomes remain unproven. These private changes
 are not shipped by this public fork.
 
-[Current company evidence](https://github.com/metacallllc-lang/hermes-autonomous-company/blob/main/evidence/CYCLE_DASHBOARD_REPAIR_2026-11-06.md).
+[Current company evidence](https://github.com/metacallllc-lang/hermes-autonomous-company/blob/main/evidence/RECOVERY_ENGINEERING_2026-11-07.md).
 Earlier checkpoints below retain their original dates and scope.
 
 ---
