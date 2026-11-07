@@ -55,6 +55,12 @@ jobs:
           # `hermes update` need real history and release tags (version identity), as on GitHub.
           fetch-depth: 0
 
+      - name: Fetch official release refs for fork upgrade fixtures
+        if: github.repository != 'NousResearch/hermes-agent'
+        # The fixture origin needs the same release identities as an upstream checkout.
+        shell: bash
+        run: git fetch --no-tags https://github.com/NousResearch/hermes-agent.git 'refs/tags/*:refs/tags/*'
+
       - name: Set up locked Python and test dependencies
         uses: ./.github/actions/setup-pm
         with:
