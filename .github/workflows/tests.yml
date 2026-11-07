@@ -288,6 +288,12 @@ jobs:
           fetch-depth: 0
           fetch-tags: true
 
+      - name: Fetch official release refs for fork upgrade fixtures
+        if: github.repository != 'NousResearch/hermes-agent'
+        # Forks can lack release tags even with a complete commit history.
+        # These authentic refs seed the temporary N-1 installation fixtures.
+        run: git fetch --no-tags https://github.com/NousResearch/hermes-agent.git 'refs/tags/*:refs/tags/*'
+
       - name: Set up Node
         # `hermes update` builds the web UI / TUI workspaces.
         uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # 7.0.0

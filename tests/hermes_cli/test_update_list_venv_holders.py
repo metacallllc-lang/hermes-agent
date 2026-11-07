@@ -8,6 +8,7 @@ from __future__ import annotations
 
 import argparse
 import json
+from types import SimpleNamespace
 
 import pytest
 
@@ -35,7 +36,8 @@ def test_list_venv_holders_json_and_exit_3_when_holders_present(monkeypatch, cap
         (4444, "python.exe", r"C:\hermes\venv\Scripts\python.exe -m hermes_cli.main -p work kanban list"),
         (4545, "python.exe", r"C:\hermes\venv\Scripts\python.exe some_script.py"),
     ]
-    monkeypatch.setattr(cli_main, "_detect_venv_python_processes", lambda: holders)
+    monkeypatch.setattr(update_cmd_windows, "_detect_venv_python_processes", lambda: holders)
+    assert cli_main._detect_venv_python_processes() == []  # frozen old-updater shim stays inert
 
     with pytest.raises(SystemExit) as exc:
         cli_main.cmd_update(_args())
@@ -49,7 +51,7 @@ def test_list_venv_holders_json_and_exit_3_when_holders_present(monkeypatch, cap
 
 
 def test_list_venv_holders_empty_list_exits_zero_without_updating(monkeypatch, capsys, _quiet_preflight):
-    monkeypatch.setattr(cli_main, "_detect_venv_python_processes", list)
+    monkeypatch.setattr(update_cmd_windows, "_detect_venv_python_processes", list)
 
     def _boom(*_a, **_k):  # the mutating update body must never run behind the read-only flag
         raise AssertionError("update body ran")
@@ -58,3 +60,51 @@ def test_list_venv_holders_empty_list_exits_zero_without_updating(monkeypatch, c
 
     assert cli_main.cmd_update(_args()) is None
     assert json.loads(capsys.readouterr().out) == []
+
+
+@pytest.mark.platforms("windows")
+def test_scanner_uses_this_installs_committed_pm_environment(monkeypatch, tmp_path):
+    from pm.environments import install_state_dir, runtime_facts_path
+
+    root = tmp_path / "checkout"
+    root.mkdir()
+    monkeypatch.setenv("HERMES_HOME", str(tmp_path / "home"))
+    monkeypatch.setattr(cli_main, "PROJECT_ROOT", root)
+    venv = install_state_dir(root) / "environments" / "generation-one" / "venv"
+    venv.mkdir(parents=True)
+    (venv / "pyvenv.cfg").write_text("version = 3.14.9\n", encoding="utf-8")
+    facts = runtime_facts_path(root)
+    facts.write_text(json.dumps({"packages": {"venv": {"environment": str(venv)}}}), encoding="utf-8")
+    exe = venv / "Scripts" / "python.exe"
+    foreign = tmp_path / "other-install" / "venv" / "Scripts" / "python.exe"
+    processes = [
+        SimpleNamespace(info={"pid": pid, "exe": str(path), "name": "python.exe"},
+                        cmdline=lambda path=path: [str(path), "-c", "import time"])
+        for pid, path in ((4242, exe), (4343, foreign))
+    ]
+    monkeypatch.setattr(update_cmd_windows, "_psutil", lambda: SimpleNamespace(process_iter=lambda fields: processes))
+    monkeypatch.setattr(update_cmd_windows, "_self_and_non_gateway_ancestor_pids", lambda _: set())
+
+    assert [row[0] for row in update_cmd_windows._detect_venv_python_processes()] == [4242]
+
+
+@pytest.mark.platforms("windows")
+@pytest.mark.parametrize("selection", ["foreign", "malformed"])
+def test_invalid_pm_selection_cannot_claim_an_empty_inventory(monkeypatch, tmp_path, selection):
+    from pm.environments import runtime_facts_path
+
+    root = tmp_path / "checkout"
+    root.mkdir()
+    monkeypatch.setenv("HERMES_HOME", str(tmp_path / "home"))
+    monkeypatch.setattr(cli_main, "PROJECT_ROOT", root)
+    facts = runtime_facts_path(root)
+    facts.parent.mkdir(parents=True)
+    foreign = tmp_path / "foreign" / "venv"
+    foreign.mkdir(parents=True)
+    (foreign / "pyvenv.cfg").write_text("version = 3.14.9\n", encoding="utf-8")
+    facts.write_text("{" if selection == "malformed" else json.dumps(
+        {"packages": {"venv": {"environment": str(foreign)}}}), encoding="utf-8")
+    monkeypatch.setattr(update_cmd_windows, "_psutil", lambda: SimpleNamespace())
+
+    with pytest.raises(RuntimeError, match="dependency environment"):
+        update_cmd_windows._detect_venv_python_processes()

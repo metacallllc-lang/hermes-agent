@@ -122,7 +122,8 @@ def _inputs_for(called: str, given: dict[str, Any]) -> dict[str, Any]:
     return {name: given.get(name, spec.get("default")) for name, spec in declared.items()}
 
 
-def _run_workflow(rel: str, *, inputs: dict[str, Any], detect: dict[str, Any] | None = None) -> dict:
+def _run_workflow(rel: str, *, inputs: dict[str, Any], detect: dict[str, Any] | None = None,
+                  repository: str = "NousResearch/hermes-agent") -> dict:
     """Which jobs of ``rel`` run on a pull request, recursing into called workflows.
 
     Returns ``{job: {"inputs": ..., "jobs": <child result>}}`` for every job that runs.
@@ -149,7 +150,7 @@ def _run_workflow(rel: str, *, inputs: dict[str, Any], detect: dict[str, Any] | 
             all_ran = all(n in ran for n in needs)
             ctx = {
                 "inputs": inputs,
-                "github": {"event_name": "pull_request", "ref_type": "branch"},
+                "github": {"event_name": "pull_request", "ref_type": "branch", "repository": repository},
                 "needs": {n: {"outputs": (ran.get(n) or {}).get("outputs", {}),
                               "result": "success" if n in ran else "skipped"} for n in needs},
                 "__status__": {"always": True, "success": all_ran, "failure": False, "cancelled": False},
@@ -165,12 +166,16 @@ def _run_workflow(rel: str, *, inputs: dict[str, Any], detect: dict[str, Any] | 
                 plan = next(s for s in body["steps"] if s.get("id") == "plan")
                 entry["outputs"] = workflow_steps.outputs(plan, ctx, _REPO)
                 assert json.loads(entry["outputs"]["shards"]), "upgrade plan selected no shards"
+            elif rel == ".github/workflows/windows-install-update-e2e.yml" and name == "plan":
+                plan = next(s for s in body["steps"] if s.get("id") == "matrix")
+                entry["outputs"] = workflow_steps.outputs(plan, ctx, _REPO)
+                assert json.loads(entry["outputs"]["journeys"]), "Windows plan selected no journeys"
             uses = body.get("uses")
             if isinstance(uses, str) and uses.startswith("./.github/workflows/"):
                 called = uses[2:]
                 given = {k: gha.render(v, ctx) for k, v in (body.get("with") or {}).items()}
                 entry["inputs"] = _inputs_for(called, given)
-                entry["jobs"] = _run_workflow(called, inputs=entry["inputs"])
+                entry["jobs"] = _run_workflow(called, inputs=entry["inputs"], repository=repository)
             ran[name] = entry
         assert progressed, f"{rel}: unresolvable needs among {pending}"
     return ran
@@ -196,6 +201,8 @@ def _selected_test_files(node: dict, name: str, *, windows_only: bool = False) -
     matrix = body.get("strategy", {}).get("matrix", {})
     if "shard" in matrix:
         cells = [{"shard": s} for s in gha.render(matrix["shard"], ctx)]
+    elif "journey" in matrix:
+        cells = [{"journey": journey} for journey in gha.render(matrix["journey"], ctx)]
     else:
         cells = matrix.get("include", [{}])
     if windows_only:
@@ -517,6 +524,8 @@ def test_replay_rejects_ineffective_required_step(monkeypatch, lane, rel, job, n
     elif job == "update":
         for cell in workflow["jobs"][job]["strategy"]["matrix"]["include"]:
             cell["specs"] = "e2e/update/absent.spec.ts"
+    elif job == "install-update":
+        step["run"] = step["run"].replace("${{ matrix.journey.path }}", "tests/absent-e2e")
     else:
         step["run"] = step["run"].replace("tests/e2e", "tests/absent-e2e")
     with pytest.raises(AssertionError):
@@ -837,6 +846,35 @@ def test_windows_install_update_dispatch_alone_sets_strict():
                        ".github/workflows/windows-install-update-e2e.yml", "install-update",
                        "Run Windows install + update E2E") == "upd-txn"
     assert "workflow_dispatch" in _on(_yaml(".github/workflows/windows-install-update-e2e.yml"))
+
+
+def test_fork_windows_plan_reaches_every_journey_with_strict_acceptance():
+    rel = ".github/workflows/windows-install-update-e2e.yml"
+    jobs = _run_workflow(rel, inputs={"strict_acceptance": "upd-txn"}, repository="hermes-test/fork")
+    node = jobs["install-update"]
+    selected = _selected_test_files(node, "Run Windows install + update E2E")
+    expected = {p.relative_to(_REPO).as_posix() for p in (_REPO / "tests/e2e/core/windows_update").glob("test_*.py")}
+    assert selected == expected
+    assert len(json.loads(jobs["plan"]["outputs"]["journeys"])) == len(expected)
+    assert _strict_env({"w": {"jobs": jobs}}, ("w", "install-update"), rel, "install-update",
+                       "Run Windows install + update E2E") == "upd-txn"
+    assert node["body"]["strategy"]["fail-fast"] is False
+
+
+@pytest.mark.parametrize("mutation", ["disabled", "advisory", "empty"])
+def test_windows_plan_cannot_silently_remove_native_coverage(monkeypatch, mutation):
+    rel = ".github/workflows/windows-install-update-e2e.yml"
+    workflow = _mutated_yaml(monkeypatch, rel)
+    step = next(s for s in workflow["jobs"]["plan"]["steps"] if s.get("id") == "matrix")
+    if mutation == "disabled":
+        step["if"] = "${{ false }}"
+    elif mutation == "advisory":
+        step["continue-on-error"] = "${{ true }}"
+    else:
+        step["run"] = 'printf "journeys=[]\\n" >> "$GITHUB_OUTPUT"'
+    with pytest.raises(AssertionError):
+        jobs = _run_workflow(rel, inputs={}, repository="hermes-test/fork")
+        assert _selected_test_files(jobs["install-update"], "Run Windows install + update E2E")
 
 
 def test_run_tests_forwards_the_strict_switch():

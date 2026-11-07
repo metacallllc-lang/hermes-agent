@@ -236,8 +236,13 @@ beforeEach(() => {
   ;(window as { hermesDesktop?: unknown }).hermesDesktop = { getAgentRoster, openWindow, probeLocalBackend }
 })
 
-afterEach(() => {
-  cleanup()
+afterEach(async () => {
+  await act(async () => {
+    cleanup()
+    // Radix restores focus in a zero-delay unmount task. Finish it while this
+    // jsdom window still owns CustomEvent, before Vitest tears the window down.
+    await new Promise<void>(resolve => setTimeout(resolve, 0))
+  })
   $profileOrder.set([])
   vi.clearAllMocks()
   vi.restoreAllMocks()

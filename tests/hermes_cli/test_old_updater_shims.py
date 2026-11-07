@@ -271,3 +271,6 @@ def test_live_windows_scan_does_not_use_the_retired_main_alias(monkeypatch, no_e
         lambda: [(123, "python", "python -m hermes_cli.main serve")],
     )
     assert update_cmd_windows._desktop_owns_gateway_lifecycle() is True
+    assert update_cmd_windows.list_venv_holders() == [
+        {"pid": 123, "exe": "python", "argv": "python -m hermes_cli.main serve", "kind": "backend"},
+    ]

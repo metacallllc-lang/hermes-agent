@@ -1,3 +1,34 @@
+## MetaCall fork progress — November 6, 2026, recovery update
+
+The catalog-test repair [PR #4](https://github.com/metacallllc-lang/hermes-agent/pull/4)
+is rebased onto current main. Its affected catalog tests pass (55 tests), and
+the repository's 12 blocking local checks pass. Hosted full CI is a separate
+requirement. The main CI workflow has been restored. Its initial upgrade lane
+could not identify a prior release because this fork has no release tags. The
+upgrade test checkouts now fetch authentic official release refs, including the
+Windows installation lane. The PR stays
+unmerged until the required current checks pass. The earlier [PR #3](https://github.com/metacallllc-lang/hermes-agent/pull/3) is merged.
+
+The private company integration has a redesigned dashboard, bounded cycle
+reports, executive ownership and duplicate-execution repairs for Hermes v0.23.
+Two ordinary CRO tasks ran once each on the authorized OpenRouter/DeepSeek
+model and were independently reconciled by the CEO. This is observed internal
+execution, separate from customer acceptance, revenue or self-funding.
+
+The complete company audit ran 157 suites on unchanged source: **148 passed,
+9 did not pass**. Retained-history proof, offline integration coverage and a
+snapshot timing mismatch remain explicit. Previous 133/149 and 147/149 figures
+describe older source generations and reruns. The original 48-hour trial deadline
+remains November 8, 10:36 AM Guatemala time. No new customer, collected payment,
+funding award or self-funding is established by these engineering checks.
+
+Private company source is preserved separately; this public fork does not ship
+the company integration. [Project evidence](https://github.com/metacallllc-lang/hermes-autonomous-company/blob/main/PUBLIC_EVIDENCE_INDEX.md).
+
+---
+
+Earlier checkpoints below retain their original dates and scope.
+
 ## November 6, 2026 — OpenRouter field trial running
 
 The six executive routes now select **DeepSeek V4.1 Flash 1017 on OpenRouter**.
