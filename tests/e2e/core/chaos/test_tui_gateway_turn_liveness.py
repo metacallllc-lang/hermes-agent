@@ -278,13 +278,20 @@ def _answered_turn(gw: TuiGatewayProcess, sid: str, nonce: str, what: str,
     return time.monotonic() - t0
 
 
+def _required_heartbeats(turn_s: float) -> int:
+    # Each successful RPC may take almost HEARTBEAT_MAX_S, followed by the
+    # configured quiet interval. A short turn need not fit five such probes.
+    # Always require an observation; longer windows still require all five.
+    return min(MIN_HEARTBEATS, max(1, int(turn_s / (HEARTBEAT_MAX_S + HEARTBEAT_INTERVAL_S))))
+
+
 def _assert_heartbeat(scn: Scenario, hb: Heartbeat, stats: dict[str, Any], turn_s: float) -> None:
     assert not hb.failures, f"{scn.id}: heartbeat RPC failed during the turn: {hb.failures}"
     stats["heartbeat_max_s"] = round(max(hb.latencies, default=0.0), 3)
     stats["heartbeats"] = len(hb.latencies)
     assert stats["heartbeat_max_s"] < HEARTBEAT_MAX_S, (
         f"{scn.id}: dispatcher blocked {stats['heartbeat_max_s']}s during the wedged turn")
-    assert len(hb.latencies) >= MIN_HEARTBEATS or turn_s < 2.0, (
+    assert len(hb.latencies) >= _required_heartbeats(turn_s), (
         f"{scn.id}: only {len(hb.latencies)} heartbeats answered in a {turn_s:.1f}s turn")
 
 
