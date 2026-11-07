@@ -23,21 +23,47 @@ _REPO = Path(__file__).resolve().parents[2]
 _SUITE = "tests/e2e/core/windows_update"
 
 
-def _workflow_selection() -> str:
-    """The ``-m`` expression the Windows install + update E2E workflow runs its suite with."""
+@pytest.fixture(scope="module", params=["NousResearch/hermes-agent", "hermes-test/fork"])
+def _workflow_selection(request) -> str:
+    """Replay the real planner and every required selection for upstream and forks."""
+    from tests.ci import _gha_expr as gha, workflow_steps
+
     yaml = pytest.importorskip("hermes_yaml")
     wf = yaml.safe_load((_REPO / ".github/workflows/windows-install-update-e2e.yml").read_text(encoding="utf-8-sig"))
-    step = next(s for s in wf["jobs"]["install-update"]["steps"] if s.get("name") == "Run Windows install + update E2E")
-    argv = shlex.split(step["run"].replace("\\\n", " "))
-    assert f"{_SUITE}/" in argv, f"the workflow no longer runs {_SUITE}/: {argv}"
-    return argv[argv.index("-m") + 1]
+    job = wf["jobs"]["install-update"]
+    step = next(s for s in job["steps"] if s.get("name") == "Run Windows install + update E2E")
+    check = next(s for s in job["steps"] if s.get("name") == "Every crash cell ran")
+    plan = next(s for s in wf["jobs"]["plan"]["steps"] if s.get("id") == "matrix")
+    ctx = {"github": {"repository": request.param}, "inputs": {}}
+    result = workflow_steps.outputs(plan, ctx, _REPO)
+    ctx["needs"] = {"plan": {"outputs": result}}
+    journeys = gha.render(job["strategy"]["matrix"]["journey"], ctx)
+    assert journeys, "Windows matrix is empty"
+    selected, selections, expressions, crash_gates = set(), 0, set(), 0
+    for journey in journeys:
+        context = {**ctx, "matrix": {"journey": journey}}
+        files = workflow_steps.selected_files(step, context, _REPO)
+        selected |= files
+        selections += len(files)
+        argv = shlex.split(gha.render(step["run"], context).replace("\\\n", " "))
+        expressions.add(argv[argv.index("-m") + 1])
+        if journey["crash"]:
+            workflow_steps.required(check, context)
+            assert f"{_SUITE}/test_crash_cells.py" in files
+            crash_gates += 1
+        else:
+            assert not gha.condition(check.get("if"), context)
+    expected = {p.relative_to(_REPO).as_posix() for p in (_REPO / _SUITE).glob("test_*.py")}
+    assert selected == expected and selections == len(expected), "missing or duplicate Windows journey"
+    assert len(expressions) == 1 and crash_gates == 1
+    return expressions.pop()
 
 
 # run_tests.sh reports a file whose every test the -m expression deselects as passed with 0
 # tests run, so a dropped platforms("windows") marker would silently run zero cells.
 @pytest.mark.parametrize("path", sorted(p.name for p in (_REPO / _SUITE).glob("test_*.py")))
-def test_windows_update_workflow_selects_every_test_of_the_suite(path):
-    selection = Expression.compile(_workflow_selection())
+def test_windows_update_workflow_selects_every_test_of_the_suite(path, _workflow_selection):
+    selection = Expression.compile(_workflow_selection)
     module = importlib.import_module(f"{_SUITE.replace('/', '.')}.{Path(path).stem}")
     tests = [fn for name, fn in inspect.getmembers(module, inspect.isfunction) if name.startswith("test")]
     assert tests, f"{path}: no module-level test functions to select"
@@ -236,7 +262,7 @@ def test_workflow_requires_the_crash_journey_manifest(tmp_path, monkeypatch):
     names = [s.get("name") for s in steps]
     run, check = steps[names.index("Run Windows install + update E2E")], steps[names.index("Every crash cell ran")]
     assert names.index("Every crash cell ran") > names.index("Run Windows install + update E2E")
-    workflow_steps.required(check, {"inputs": {}})  # neither disabled nor advisory
+    workflow_steps.required(check, {"inputs": {}, "matrix": {"journey": {"crash": True}}})
     assert check["env"]["HERMES_E2E_ARTIFACTS"] == run["env"]["HERMES_E2E_ARTIFACTS"]
     assert f"'{crash.CELLS_RAN_MANIFEST}'" in check["run"] and "throw" in check["run"]
 
