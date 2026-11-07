@@ -1,3 +1,35 @@
+## November 7 - build repair merged
+
+[PR #4](https://github.com/metacallllc-lang/hermes-agent/pull/4) is merged after
+hosted verification of the reviewed revision. Upgrade fixtures fetch authentic
+official release refs; catalog fallback, bounded command waits, heartbeat sampling
+and dialog cleanup retain their assertions. The Windows process inventory now calls
+the active scanner; retired compatibility shims remain inert.
+The scanner resolves external v0.23 dependency environments through PM's existing
+install-bound contract; foreign or malformed selections refuse, and retired
+mutating holder gates remain inert. Local validation
+passes 55 catalog, 26 command, ten heartbeat, 32 fleet and 106 updater regression
+tests, 162 CI replay/oracle tests, plus all 12 blocking checks. Native Windows installation/update validation
+passes on the unchanged executable source, including the required live-holder assertion,
+crash-cell coverage and leftover-process cleanup. Fork Windows jobs have 120 minutes;
+upstream retains 75 minutes. Per-file budgets, assertions and cleanup are unchanged.
+Fork journeys run on isolated native runners after disk exhaustion in the combined
+runner. Source discovery includes every journey file, with no fail-fast or retries;
+upstream retains its full batch and the crash manifest remains required.
+
+The separate private company integration has a responsive VEXO dashboard and
+verified ordinary single-occurrence CEO/executive execution. Its final frozen-source
+audit is **150/159**, with **9 nonpassing** historical,
+offline-integration or snapshot proof findings. Mission evidence hashes now stream
+every retained byte with bounded memory and source-change refusal. Overall preparation
+performance and sustained commercial outcomes remain unproven. These private changes
+are not shipped by this public fork.
+
+[Current company evidence](https://github.com/metacallllc-lang/hermes-autonomous-company/blob/main/evidence/CYCLE_DASHBOARD_REPAIR_2026-11-06.md).
+Earlier checkpoints below retain their original dates and scope.
+
+---
+
 ## MetaCall fork progress — November 6, 2026, recovery update
 
 The catalog-test repair [PR #4](https://github.com/metacallllc-lang/hermes-agent/pull/4)
