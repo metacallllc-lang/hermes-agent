@@ -1,3 +1,11 @@
+## November 16 - private company integration: executives act under an owner veto
+
+No fork code changed. The separate private company built on this runtime now gives each executive seat governed
+actions: internal ones run at once; email, marketplace replies, publishing and invoices post a veto notice and run
+after 60 minutes unless the owner vetoes. Two executive-written emails were sent and verified on November 16. No
+customer, payment or revenue is claimed. These private changes are not shipped by this public fork.
+[Evidence](https://github.com/metacallllc-lang/hermes-autonomous-company/blob/main/evidence/CSUITE_ACTION_AUTHORITY_2026-11-16.md).
+
 ## November 7 - build repair merged
 
 [PR #4](https://github.com/metacallllc-lang/hermes-agent/pull/4) is merged after
