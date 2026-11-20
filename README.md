@@ -1,3 +1,11 @@
+## November 20 - private company integration: marketplace orders and a growth engine
+
+No fork code changed. The separate private company built on this runtime now runs an order desk for its
+marketplace gigs (order to reviewed delivery under an owner veto) and a growth engine through which executives
+run measured experiments and launch offers that clear a margin rule. Executive web research now uses this
+runtime's own search backend. No customer, payment or revenue is claimed. These private changes are not shipped
+by this public fork. [Evidence](https://github.com/metacallllc-lang/hermes-autonomous-company/blob/main/evidence/GROWTH_ENGINE_AND_ORDER_DESK_2026-11-20.md).
+
 ## November 16 - private company integration: executives act under an owner veto
 
 No fork code changed. The separate private company built on this runtime now gives each executive seat governed
