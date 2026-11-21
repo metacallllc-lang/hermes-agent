@@ -1,3 +1,7 @@
+## November 21 - private company integration: first customer focus and scheduler verification
+
+The separate private company integration added a first-customer scorecard and repaired a scheduler crash when gateway admission is blocked. Two scheduled wakes verified that the private scheduler records the refusal with zero model calls. Gateway admission and the first verified paid customer remain open. This is an integration status update. The implementation lives in the private company workspace. [Evidence](https://github.com/metacallllc-lang/hermes-autonomous-company/blob/main/evidence/FIRST_CUSTOMER_AND_ADMISSION_2026-11-21.md).
+
 ## November 20 - private company integration: marketplace orders and a growth engine
 
 No fork code changed. The separate private company built on this runtime now runs an order desk for its
